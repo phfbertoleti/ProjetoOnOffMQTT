@@ -1,0 +1,170 @@
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>.:: Automação residencial - IoT ::.</title>
+	<script type='text/javascript' src='mosquitto.js'></script>
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+   	
+	<body>
+	
+	<table border=0 width="100%">
+		<tr>
+			<th bgcolor = "#0000CD">
+			    <center><font color="white" size=5><b><p>Automação residencial - IoT</p></b></font></center><br>
+			</th>
+		</tr>
+	</table>
+	
+	<table border=0 width="100%">
+		<tr>			<!-- Primeira linha-->
+	        <td bgcolor="#A9A9A9" width="35%">		
+    			<div id="broker">
+					<font color="white" size=3><b>Broker / servidor:</b></font><br><Br>
+					<table border=0>
+						<td>
+							<center><img src="cloud.png" height="100" width="100"></center>
+						</td>
+						<td>
+							<div id="publish">								
+								<font color="white" size=3><p>Tópico de envio:    <input class="txt" id="pub-topic-text" type="text" value="MQTTHomeIOTEnvia"></font></p>
+								<font color="white" size=3><p>Tópico de recepção: <input class="txt" id="pub-subscribe-text" type="text" value="MQTTHomeIOTRecebe"></font></p>
+							</div>
+							<center>
+								<input id="connect-button" type="button"    value="   Conectar  " width="120">
+								<input id="disconnect-button" type="button" value="Desconectar" width="120">
+							</center>	
+						</td>
+					</table>
+					
+				</div>
+				<font color="white" size=3><p><b>Respostas do servidor(para debug):</b></font></p>
+				<div id="debug"></div>
+				<script src="tmo.js" type="text/javascript"></script>
+			</td>
+			<td width="65%" bgcolor="#A9A9A9">
+				<table border=0>
+						<td>
+							<center><img src="informacoes.png" height="100" width="100"></center>
+						</td>
+						<td>
+							<font color="white" size=4><p><b>Informações dos módulos:</b></font></p>
+							<font color="white" size=2>Módulo 1:</font>
+							<table>
+								<tr>
+									<td>
+										<div id="status_io_m1s1"></div>
+									</td>
+									
+									<td>
+										<div id="status_io_m1s2"></div>
+									</td>
+									
+									<td>
+									    <div id="status_io_m1s3"></div>
+									</td>
+									
+									<td>
+										<div id="status_io_m1s4"></div>
+									</td>
+								</tr>
+							</table>
+
+							<font color="white" size=2><p>Módulo 2:</font>
+                            <table>							
+								<tr>
+									<td>
+										<div id="status_io_m2s1"></div>
+									</td>
+									
+									<td>
+										<div id="status_io_m2s2"></div>
+									</td>
+									
+									<td>
+									    <div id="status_io_m2s3"></div>
+									</td>
+									
+									<td>
+										<div id="status_io_m2s4"></div>
+									</td>
+								</tr>
+							</table>
+							
+					    </td>
+				</table>		
+			</td>
+			
+		</tr>
+		
+		<table border=0 width="100%" bgcolor="#D3D3D3">
+			<tr> 
+				<th>
+					<font color="black" size=4>Ações nos módulos:</font>
+				</th>
+			</tr>
+			<tr>
+				<td width="30%">
+					<center><img src="onoff.png" height="100" width="100"></center>
+				</td>
+				<!-- Colocar aqui módulo a módulo que desejar comandar-->
+				<td width="25%">
+					
+					<p><b>Módulo 1</b></p>
+					Saída 1: <input id="botao-ligar-modulo1-saida1" type="button" value="Ligar">
+					<input id="botao-desligar-modulo1-saida1" type="button" value="Desligar"><br>
+					Saída 2: <input id="botao-ligar-modulo1-saida2" type="button" value="Ligar">
+					<input id="botao-desligar-modulo1-saida2" type="button" value="Desligar"><br>
+					Saída 3: <input id="botao-ligar-modulo1-saida3" type="button" value="Ligar">
+					<input id="botao-desligar-modulo1-saida3" type="button" value="Desligar"><br>
+					Saída 4: <input id="botao-ligar-modulo1-saida4" type="button" value="Ligar">
+					<input id="botao-desligar-modulo1-saida4" type="button" value="Desligar"><br>					
+				</td>
+				<td width="25%">	
+					<p><b>Módulo 2</b></p>
+					Saída 1: <input id="botao-ligar-modulo2-saida1" type="button" value="Ligar">
+					<input id="botao-desligar-modulo2-saida1" type="button" value="Desligar"><br>
+					Saída 2: <input id="botao-ligar-modulo2-saida2" type="button" value="Ligar">
+					<input id="botao-desligar-modulo2-saida2" type="button" value="Desligar"><br>
+					Saída 3: <input id="botao-ligar-modulo2-saida3" type="button" value="Ligar">
+					<input id="botao-desligar-modulo2-saida3" type="button" value="Desligar"><br>
+					Saída 4: <input id="botao-ligar-modulo2-saida4" type="button" value="Ligar">
+					<input id="botao-desligar-modulo2-saida4" type="button" value="Desligar"><br>					
+				</td>
+				<!-- Não presente nesta versão
+				<td width="20%">	
+					<input type="checkbox" id="habilita-envio-agendado"><b>Acionamento agendado: </b><input type="datetime-local" id = "data-hora-acao">					
+				</td>
+				-->
+			</tr>
+		</table>		
+	</table>
+	
+	<table border=0 width="100%" bgcolor="#ECECEC">		
+		<tr>
+			<td width="50%">
+				<center>
+					<b>Temperatura ambiente (ºC)</b><br>
+					<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/111705/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe><br>
+					<font color="blue" size=1>ThingSpeak</font>
+				</center>
+			</td>
+			<td width="50%">
+				<center>
+					<b>Luminosidade</b><br>
+					<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/111705/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe><br>
+					<font color="blue" size=1>ThingSpeak</font>
+				</center>
+			</td>
+		</tr>
+		
+	</table>
+	
+	<table border=0 width="100%">
+		<tr>
+			<th bgcolor = "#011751">
+			    <center><font color="white" size=2><b><p>Autor: Pedro Bertoleti - Maio/2016</p></b></font></center>
+			</th>
+		</tr>
+	</table>
+		
+	</body>
+</html>
